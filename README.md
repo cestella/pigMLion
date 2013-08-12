@@ -24,5 +24,5 @@ More to come!
 FAQ
 =====
 
-# How does this differ from Mahout?
-# How do I contribute?
+* How does this differ from Mahout?
+* How do I contribute?
