@@ -11,15 +11,16 @@ licensing of this library is GPLv2.
 Feature Set
 ===========
 
-This list is aspirational.  Nothing exists currently. :)  Stay tuned!
+What we have now
 
 * Locality Sensitive Hashing UDF for spatial clustering
-* UDF to execute cPython scripts via Jepp
-* UDF to execute R scripts via Renjin
-* UDFs supporting NLP operations from Stanford NLP, Mallet
-* UDFs supporting machine learning and data mining operations from Weka
+  * L1 and L2 metric LSH via Stable Distributions
+  * Cosine Distance LSH via random hyperplanes
 
-More to come!
+What we will soon have
+ 
+* Sample Pig scripts for the LSH implementations
+* Classifier UDFs for training as well as applications via Weka
 
 FAQ
 =====
