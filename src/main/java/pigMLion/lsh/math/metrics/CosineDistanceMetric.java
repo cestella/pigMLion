@@ -15,6 +15,6 @@ public class CosineDistanceMetric implements IDistanceMetric
     public double apply(RealVector v1, RealVector v2)
     {
         double dotProduct = v1.dotProduct(v2);
-        return dotProduct / (v1.getNorm()*v2.getNorm());
+        return 1.0 - dotProduct / (v1.getNorm()*v2.getNorm());
     }
 }

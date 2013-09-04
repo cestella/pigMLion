@@ -99,7 +99,8 @@ public abstract class LSHDistributionTestUtil
                 {
                     total++;
                     RealVector v_j = groupValues.get(j);
-                    if(metric.apply(v_i, v_j) >= minDistance)
+                    double dist = metric.apply(v_i, v_j);
+                    if(dist >= minDistance)
                     {
                         error++;
                     }

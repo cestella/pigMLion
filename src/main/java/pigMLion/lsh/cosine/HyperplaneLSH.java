@@ -45,6 +45,6 @@ public class HyperplaneLSH implements ILSH
 
     public long apply(RealVector vector)
     {
-        return r.dotProduct(r) >= 0?1:0;
+        return r.dotProduct(vector) >= 0?1:0;
     }
 }
