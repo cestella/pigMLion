@@ -1,14 +1,13 @@
 package pigMLion.lsh.p_stable.l1;
 
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.random.RandomDataImpl;
-import org.apache.commons.math.random.RandomGenerator;
+import org.apache.commons.math3.random.RandomDataImpl;
+import org.apache.commons.math3.random.RandomGenerator;
 
 
 import pigMLion.lsh.interfaces.IDistanceMetric;
-import pigMLion.lsh.interfaces.IHashCreator;
+import pigMLion.lsh.interfaces.ILSHCreator;
 import pigMLion.lsh.interfaces.ILSH;
-import pigMLion.lsh.math.L1DistanceMetric;
+import pigMLion.lsh.math.metrics.L1DistanceMetric;
 import pigMLion.lsh.p_stable.stabledistribution.AbstractStableDistributionFunction;
 
 public class L1LSH extends AbstractStableDistributionFunction 
@@ -16,7 +15,7 @@ public class L1LSH extends AbstractStableDistributionFunction
 	protected static class L1Sampler implements AbstractStableDistributionFunction.ISampler
 	{
 
-		public double apply(RandomDataImpl randomData) throws MathException {
+		public double apply(RandomDataImpl randomData) {
 			
 			return randomData.nextCauchy(0, 1);
 			
@@ -26,7 +25,7 @@ public class L1LSH extends AbstractStableDistributionFunction
 	private static ISampler sampler = new L1Sampler();
 	public static IDistanceMetric metric = new L1DistanceMetric();
 	
-	public static class Creator implements IHashCreator
+	public static class Creator implements ILSHCreator
 	{
 		int dim;
 		float w;
@@ -37,7 +36,7 @@ public class L1LSH extends AbstractStableDistributionFunction
 			this.w = w;
 			
 		}
-		public ILSH construct(long seed) throws MathException {
+		public ILSH construct(long seed) {
 			return new L1LSH(dim, w, seed);
 		}
 		
@@ -45,13 +44,12 @@ public class L1LSH extends AbstractStableDistributionFunction
 	
 	/**
 	 * Constructs a new instance.
-	 * @throws MathException 
 	 */
-	public L1LSH(int dim, float w, RandomGenerator rand) throws MathException {
+	public L1LSH(int dim, float w, RandomGenerator rand) {
 		super(dim, w, rand);
 	}
 
-	public L1LSH(int dim, float w, long seed) throws MathException {
+	public L1LSH(int dim, float w, long seed) {
 		
 		super(dim, w, seed);
 	}

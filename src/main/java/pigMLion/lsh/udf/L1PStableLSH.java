@@ -1,12 +1,7 @@
 package pigMLion.lsh.udf;
 
-import org.apache.commons.math.MathException;
-import org.apache.pig.EvalFunc;
-import org.apache.pig.data.Tuple;
-import pigMLion.lsh.interfaces.ILSH;
+import pigMLion.lsh.interfaces.ILSHCreator;
 import pigMLion.lsh.p_stable.l1.L1LSH;
-
-import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,15 +12,16 @@ import java.io.IOException;
  */
 public class L1PStableLSH extends AbstractPStableLSH
 {
-    public L1PStableLSH(String sDim, String sW, String sSeed)
+    public L1PStableLSH(String sDim, String sW, String sSeed, String sRepeat)
     {
-        super(sDim, sW, sSeed);
+
+        super(sDim, sW, sSeed, sRepeat);
     }
 
     @Override
-    protected ILSH getHash(int dim, float w, long seed) throws MathException
+    protected ILSHCreator getHash(int dim, float w)
     {
-        return new L1LSH.Creator(dim, w).construct(seed);
+        return new L1LSH.Creator(dim, w);
     }
 
 }

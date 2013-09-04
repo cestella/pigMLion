@@ -1,27 +1,23 @@
-package com.caseystella.math.stabledistribution;
+package pigMLion.lsh.p_stable.stabledistribution;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-import org.apache.commons.math.DimensionMismatchException;
-import org.apache.commons.math.linear.MatrixUtils;
-import org.apache.commons.math.linear.NotPositiveDefiniteMatrixException;
-import org.apache.commons.math.linear.RealMatrix;
-import org.apache.commons.math.random.CorrelatedRandomVectorGenerator;
-import org.apache.commons.math.random.GaussianRandomGenerator;
-import org.apache.commons.math.random.JDKRandomGenerator;
-import org.apache.commons.math.random.RandomGenerator;
+import org.apache.commons.math3.linear.MatrixUtils;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.random.CorrelatedRandomVectorGenerator;
+import org.apache.commons.math3.random.GaussianRandomGenerator;
+import org.apache.commons.math3.random.JDKRandomGenerator;
+import org.apache.commons.math3.random.RandomGenerator;
 
 public class GenerateRandomVectorsCLI {
 
 	/**
 	 * @param args
-	 * @throws DimensionMismatchException 
-	 * @throws NotPositiveDefiniteMatrixException 
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException
 	 */
-	public static void main(String[] args) throws NotPositiveDefiniteMatrixException, DimensionMismatchException, FileNotFoundException 
+	public static void main(String[] args) throws FileNotFoundException
 	{
 		// Create and seed a RandomGenerator (could use any of the generators in the random package here)
 		RandomGenerator rg = new JDKRandomGenerator();

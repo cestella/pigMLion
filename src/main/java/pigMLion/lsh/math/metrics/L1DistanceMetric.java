@@ -1,7 +1,6 @@
-package pigMLion.lsh.math;
+package pigMLion.lsh.math.metrics;
 
-import org.apache.commons.math.linear.RealVector;
-
+import org.apache.commons.math3.linear.RealVector;
 import pigMLion.lsh.interfaces.IDistanceMetric;
 
 public class L1DistanceMetric implements IDistanceMetric

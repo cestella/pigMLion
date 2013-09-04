@@ -1,34 +1,36 @@
-package pigMLion.lsh.interfaces;
+package pigMLion.lsh.composite;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.linear.RealVector;
+import org.apache.commons.math3.linear.RealVector;
+import pigMLion.lsh.interfaces.IDistanceMetric;
+import pigMLion.lsh.interfaces.ILSH;
+import pigMLion.lsh.interfaces.ILSHCreator;
 
 public class RepeatingLSH implements ILSH
 {
-	public static class Creator implements IHashCreator
+	public static class Creator implements ILSHCreator
 	{
 		int numRepetitions;
-		IHashCreator underlyingCreator;
+		ILSHCreator underlyingCreator;
 		
 		
-		public Creator(int numRepetitions, IHashCreator underlyingCreator)
+		public Creator(int numRepetitions, ILSHCreator underlyingCreator)
 		{
 			this.numRepetitions = numRepetitions;
 			this.underlyingCreator = underlyingCreator;
 			
 		}
-		public ILSH construct(long seed) throws MathException {
+		public ILSH construct(long seed){
 			return new RepeatingLSH(numRepetitions, underlyingCreator, seed);
 		}
 		
 	}
 	private List<ILSH> lshList;
 	private int[] coefficients;
-	public RepeatingLSH(int numRepetitions, IHashCreator pHashCreator, long seed) throws MathException
+	public RepeatingLSH(int numRepetitions, ILSHCreator pHashCreator, long seed)
 	{
 		lshList = new ArrayList<ILSH>();
 		coefficients = new int[numRepetitions];

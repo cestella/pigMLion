@@ -1,10 +1,9 @@
 package pigMLion.lsh.p_stable.stabledistribution;
 
-import org.apache.commons.math.MathException;
-import org.apache.commons.math.linear.RealVector;
-import org.apache.commons.math.random.JDKRandomGenerator;
-import org.apache.commons.math.random.RandomDataImpl;
-import org.apache.commons.math.random.RandomGenerator;
+import org.apache.commons.math3.linear.RealVector;
+import org.apache.commons.math3.random.JDKRandomGenerator;
+import org.apache.commons.math3.random.RandomDataImpl;
+import org.apache.commons.math3.random.RandomGenerator;
 
 import pigMLion.lsh.interfaces.ILSH;
 
@@ -12,7 +11,7 @@ public abstract class AbstractStableDistributionFunction implements ILSH
 {
 	public static interface ISampler
 	{
-		public double apply(RandomDataImpl randomData) throws MathException;
+		public double apply(RandomDataImpl randomData) ;
 	}
    private double[] a;
    private double b;
@@ -21,14 +20,13 @@ public abstract class AbstractStableDistributionFunction implements ILSH
 
    /**
     * Constructs a new instance.
- * @throws MathException 
     */
-   public AbstractStableDistributionFunction(int dim, float w, RandomGenerator rand) throws MathException
+   public AbstractStableDistributionFunction(int dim, float w, RandomGenerator rand)
    {
       reset(dim, w, rand); 
    }
 
-   public AbstractStableDistributionFunction(int dim, float w, long seed) throws MathException
+   public AbstractStableDistributionFunction(int dim, float w, long seed)
    {
       RandomGenerator generator = new JDKRandomGenerator();
       generator.setSeed(seed);
@@ -38,7 +36,7 @@ public abstract class AbstractStableDistributionFunction implements ILSH
            );
    }
 
-   public void reset(int dim, float w, RandomGenerator rand) throws MathException
+   public void reset(int dim, float w, RandomGenerator rand)
    {
       RandomDataImpl dataSampler = new RandomDataImpl(rand);
       ISampler sampler = getSampler(dataSampler);      

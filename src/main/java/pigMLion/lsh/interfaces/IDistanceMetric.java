@@ -1,6 +1,6 @@
 package pigMLion.lsh.interfaces;
 
-import org.apache.commons.math.linear.RealVector;
+import org.apache.commons.math3.linear.RealVector;
 
 public interface IDistanceMetric
    {

@@ -1,7 +1,7 @@
 package pigMLion.lsh.udf;
 
-import org.apache.commons.math.MathException;
 import pigMLion.lsh.interfaces.ILSH;
+import pigMLion.lsh.interfaces.ILSHCreator;
 import pigMLion.lsh.p_stable.l2.L2LSH;
 
 /**
@@ -12,13 +12,13 @@ import pigMLion.lsh.p_stable.l2.L2LSH;
  * To change this template use File | Settings | File Templates.
  */
 public class L2PStableLSH extends AbstractPStableLSH{
-    public L2PStableLSH(String sDim, String sW, String sSeed)
+    public L2PStableLSH(String sDim, String sW, String sSeed, String sRepeat)
     {
-        super(sDim, sW, sSeed);
+        super(sDim, sW, sSeed, sRepeat);
     }
     @Override
-    protected ILSH getHash(int dim, float w, long seed) throws MathException
+    protected ILSHCreator getHash(int dim, float w)
     {
-        return new L2LSH.Creator(dim, w).construct(seed);
+        return new L2LSH.Creator(dim, w);
     }
 }
